@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %} Cadastro de Notícia{% endblock %}
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+{% endblock %}
+
+{% block 'content' %}
+    <div class="title-container">
+        <i class="fa-solid fa-newspaper"></i>
+        <h1>Criar Notícia</h1>
+    </div>
+    <div class="form-container">
+        <form method="POST" action="{% url 'cadastrarnoticia' %}">{% csrf_token %}
+            <input type="text" placeholder="Autor da Notícia" name="author">
+            <input type="text" placeholder="Título da Notícia" name="title">
+            <input type="text" placeholder="Legenda da Notícia" name="caption">
+            <input type="text" placeholder="Categoria da Notícia" name="category">
+            <input type="text" placeholder="Texto da Notícia" name="text">
+            <input type="submit">
+    </div>
+{% endblock %}
+

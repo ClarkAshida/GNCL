@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %} Cadastro de Funcionários ContestLink{% endblock %}
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+{% endblock %}
+
+{% block 'content' %}
+<div class="register-container">
+    <div class="title-container">
+        <i class="fa-solid fa-user"></i>
+        <h1>Cadastrar Funcionário</h1>
+    </div>
+    <form method="POST" action="{% url 'cadastro' %}">{% csrf_token %}
+        <input type="text" placeholder="Nome do Funcionário" name="name">
+        <input type="text" placeholder="Login do Funcionário" name="login">
+        <input type="password" placeholder="Senha do Funcionário" name="password">
+        <input type="submit">
+</div>
+{% endblock %}
+

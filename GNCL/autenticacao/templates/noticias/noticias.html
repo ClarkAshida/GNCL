@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}Lista de Notícias{% endblock %}
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'css/noticias.css'%}">
+{% endblock %}
+
+{% block 'content' %}
+    <div class="title-container">
+        <i class="fa-solid fa-newspaper"></i>
+        <h1>Notícias</h1>
+    </div>
+    <div class="form-container">
+        {% for i in noticias %}
+            <p>ID: {{i.id}}</p>
+            <p>Título: {{i.titulo}}</p>
+            <p>Autor: {{i.autor}}</p>
+            <p>Categoria: {{i.categoria}}</p>
+            <hr></hr>
+        {%endfor%}
+    </div>
+{% endblock %}
