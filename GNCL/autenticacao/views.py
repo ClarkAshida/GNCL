@@ -3,9 +3,9 @@ from django.http import HttpResponse
 from .models import Funcionario, Noticia
 from datetime import date
 
-def cadastro(request):
+def cadastrarfuncionario(request):
     if request.method == "GET":
-        return render(request, 'cadastro/cadastro.html')
+        return render(request, 'funcionarios/cadastro.html')
     elif request.method == "POST":
         name = request.POST.get('name')
         login = request.POST.get('login')
@@ -16,7 +16,7 @@ def cadastro(request):
             password = password
         )
         funcionario.save()
-        return render(request, 'cadastro/index.html')
+        return render(request, 'funcionarios/cadastro.html')
 
 def funcionarios(request):
     funcionarios = Funcionario.objects.all()
@@ -53,4 +53,22 @@ def noticias(request):
     return render(request, 'noticias/noticias.html', {'noticias': noticias})
 
 def login(request):
-    return HttpResponse('Faça seu Login')
+    return render(request, 'funcionarios/login.html')
+
+def dashboard(request):
+    return render(request, 'dashboard/dashboard.html')
+
+def display_funcionarios(request, id=None):
+    if id:
+        funcionarios_id = Funcionario.objects.get(id=id)
+    else: 
+        funcionarios_id = "" 
+    return render(request, 'funcionarios/funcionarios_id.html', {"funcionarios_id": funcionarios_id})
+
+def display_noticias(request, id=None):
+    if id:
+        noticias_id = Noticia.objects.get(id=id)
+    else: 
+        noticias_id = "" 
+    return render(request, 'noticias/noticias_id.html', {"noticias_id": noticias_id}) 
+    

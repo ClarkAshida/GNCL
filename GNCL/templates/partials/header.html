@@ -1,0 +1,20 @@
+<header>
+    <div class="header-container">
+        <div class="logo-container">
+            <p>Contest<span>Link</span></p>
+        </div>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <div class="buttons-container">
+            <button class="main-btn">Sair</button>
+        </div>
+    </div>
+</header>
+<nav>
+        <lu>
+            <li><a href="{%url 'dashboard'%}">Página Inicial</a></li>
+            <li><a href="{% url 'cadastrarnoticia'%}">Cadastrar Notícia</a></li>
+            <li><a href="{%url 'noticias'%}">Visualizar Notícias</a></li>
+            <li><a href="{%url 'cadastrarfuncionario'%}">Cadastrar Funcionário</a></li>
+            <li><a href="{%url 'funcionarios'%}">Visualizar Funcionários</a></li>
+        </lu>
+</nav>

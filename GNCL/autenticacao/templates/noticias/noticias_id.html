@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}{{noticias_id.titulo}}{% endblock %}
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+{% endblock %}
+
+{% block 'content' %}
+    <div class="title-container">
+        <h1>{{noticias_id.titulo}}</h1>
+    </div>
+    <div class="info-container">
+        <h2>Informações da Notícia:</h2>
+        <p>Título: {{noticias_id.titulo}}</p>
+        <p>Autor: {{noticias_id.autor}}</p>
+        <p>Texto: {{noticias_id.texto}}</p>
+        <p>Legenda: {{noticias_id.legenda}}</p>
+        <p>Categoria: {{noticias_id.categoria}}</p>
+        <p>Data e Hora: {{noticias_id.data_e_hora}}</p>
+        <p>Id do Funcionario: {{noticias_id.id_funcionario.id}} ({{noticias_id.id_funcionario.name}})</p>
+    </div>
+{% endblock %}
+
+<!--
+    titulo = models.CharField(max_length=100)
+    autor = models.CharField(max_length=100)
+    texto = models.TextField()
+    legenda = models.CharField(max_length=100)
+    categoria = models.CharField(max_length=100)
+    data_e_hora = models.DateTimeField()  
+    id_funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+-->

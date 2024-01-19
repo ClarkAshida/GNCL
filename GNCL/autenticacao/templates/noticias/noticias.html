@@ -12,12 +12,51 @@
         <h1>Notícias</h1>
     </div>
     <div class="form-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Legenda</th>
+                    <th>Categoria</th>
+                    <th>Data</th>
+                    <th>Texto</th>
+                </tr>
+            </thead>    
+            <tbody>
         {% for i in noticias %}
+                <tr> 
+                    <td><a href="{% url 'noticias_id' id=i.id%}">{{i.titulo}}</a></td>
+                    <td>{{i.autor}}</td>
+                    <td>{{i.legenda}}</td>
+                    <td>{{i.categoria}}</td>
+                    <td>{{i.data_e_hora | date:"d/m/Y"}}</td>
+                {% if i.texto|length > 20 %}
+                    <td>{{i.texto | slice:":20"}}<a href="{% url 'noticias_id' id=i.id%}">... Ler mais</a></p></td>
+                {% else %}
+                    <td>{{ i.texto }}</td>
+                {% endif %}
+                </tr>
+        {%endfor%}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+<!--
+    {% for i in noticias %}
             <p>ID: {{i.id}}</p>
-            <p>Título: {{i.titulo}}</p>
+            <p><a href="{% url 'noticias_id' id=i.id%}">Título: {{i.titulo}}</a></p>
             <p>Autor: {{i.autor}}</p>
             <p>Categoria: {{i.categoria}}</p>
             <hr></hr>
-        {%endfor%}
-    </div>
-{% endblock %}
+    {%endfor%}
+
+    titulo = models.CharField(max_length=100)
+    autor = models.CharField(max_length=100)
+    texto = models.TextField()
+    legenda = models.CharField(max_length=100)
+    categoria = models.CharField(max_length=100)
+    data_e_hora = models.DateTimeField()  
+    id_funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+-->

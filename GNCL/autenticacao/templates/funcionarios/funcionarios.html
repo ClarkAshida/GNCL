@@ -1,10 +1,43 @@
-<h1>Funcionários</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-{% for i in funcionarios %}
-<p>ID: {{i.id}}</p>
-<p>Nome: {{i.name}}</p>
-<p>Login: {{i.login}}</p>
-<p>Senha: {{i.password}}</p>
-<hr></hr>
+{% block 'title' %}Lista de Notícias{% endblock %}
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+{% endblock %}
 
-{%endfor%}
+{% block 'content' %}
+    <div class="title-container">
+        <i class="fa-solid fa-newspaper"></i>
+        <h1>Funcionários</h1>
+    </div>
+    <div class="form-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Login</th>
+                </tr>
+            </thead>    
+            <tbody>
+        {% for i in funcionarios %}
+                <tr> 
+                    <td><a href="{% url 'funcionarios_id' id=i.id%}">{{i.name}}</a></td>
+                    <td>{{i.login}}</td>
+                </tr>
+        {%endfor%}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+<!--
+    Listagem Comum:
+     {% for i in funcionarios %}
+            <p>ID: {{i.id}}</p>
+            <p><a href="{% url 'funcionarios_id' id=i.id%}">Nome: {{i.name}}</a></p>
+            <p>Login: {{i.login}}</p>
+            <p>Senha: {{i.password}}</p>
+            <hr></hr>
+        {%endfor%}
+-->
