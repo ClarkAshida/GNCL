@@ -17,8 +17,7 @@
         <p>Texto: {{noticias_id.texto}}</p>
         <p>Legenda: {{noticias_id.legenda}}</p>
         <p>Categoria: {{noticias_id.categoria}}</p>
-        <p>Data e Hora: {{noticias_id.data_e_hora}}</p>
-        <p>Id do Funcionario: {{noticias_id.id_funcionario.id}} ({{noticias_id.id_funcionario.name}})</p>
+        <p>Data: {{noticias_id.data_e_hora | date:"d/m/Y"}}</p>
     </div>
 {% endblock %}
 

@@ -11,12 +11,18 @@
         <i class="fa-solid fa-newspaper"></i>
         <h1>Funcionários</h1>
     </div>
+    <div class="input-container">
+        <button><a href="{% url 'cadastrarfuncionario'%}">Cadastrar Funcionário</a></button>
+        <input type="text" name="" id="" placeholder="Buscar Funcionario">
+        <input type="submit" value="Enviar">
     <div class="form-container">
         <table>
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>Login</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>    
             <tbody>
@@ -24,6 +30,8 @@
                 <tr> 
                     <td><a href="{% url 'funcionarios_id' id=i.id%}">{{i.name}}</a></td>
                     <td>{{i.login}}</td>
+                    <td><a href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td><a href=""><i class="fa-solid fa-trash"></i></a></td>
                 </tr>
         {%endfor%}
             </tbody>

@@ -8,7 +8,7 @@ class Funcionario(models.Model):
 
 class Noticia(models.Model):
     titulo = models.CharField(max_length=100)
-    autor = models.CharField(max_length=100) #Substituir por id_funcionario
+    autor = models.CharField(max_length=100)
     texto = models.TextField()
     legenda = models.CharField(max_length=100)
     categoria = models.CharField(max_length=100)

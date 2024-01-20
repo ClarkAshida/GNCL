@@ -13,10 +13,14 @@
         <h1>Cadastrar Funcionário</h1>
     </div>
     <form method="POST" action="{% url 'cadastrarfuncionario' %}">{% csrf_token %}
-        <input type="text" placeholder="Nome do Funcionário" name="name">
-        <input type="text" placeholder="Login do Funcionário" name="login">
-        <input type="password" placeholder="Senha do Funcionário" name="password">
-        <input type="submit">
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+
+    {% if form.errors %}
+        <p style="color: red;">Corrija os erros abaixo:</p>
+    {% endif %}
+    {{ form.errors }}
 </div>
 {% endblock %}
 

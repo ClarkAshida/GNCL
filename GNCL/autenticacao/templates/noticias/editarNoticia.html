@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block 'title' %} Cadastro de Notícia{% endblock %}
+{% block 'title' %} Edição de Notícia{% endblock %}
 {% block 'head' %}
     <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
 {% endblock %}
@@ -9,17 +9,13 @@
 {% block 'content' %}
     <div class="title-container">
         <i class="fa-solid fa-newspaper"></i>
-        <h1>Criar Notícia</h1>
+        <h1>Editar Notícia: "{{noticias_id.titulo}}"</h1>
     </div>
     <div class="form-container">
-        <form method="POST" action="{% url 'cadastrarnoticia' %}">{% csrf_token %}
+        <form method="POST">{% csrf_token %}
             {{ form.as_p }}
             <input type="submit">
         </form>
-        {% if form.errors %}
-        <p style="color: red;">Corrija os erros abaixo:</p>
-        {% endif %}
-        {{ form.errors }}
     </div>
 {% endblock %}
 
