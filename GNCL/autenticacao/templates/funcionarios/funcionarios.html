@@ -4,6 +4,7 @@
 {% block 'title' %}Lista de Notícias{% endblock %}
 {% block 'head' %}
     <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+    <script src="{% static 'js/funcionarioScript.js' %}"></script>
 {% endblock %}
 
 {% block 'content' %}
@@ -12,13 +13,32 @@
         <h1>Funcionários</h1>
     </div>
     <div class="input-container">
-        <button><a href="{% url 'cadastrarfuncionario'%}">Cadastrar Funcionário</a></button>
-        <input type="text" name="" id="" placeholder="Buscar Funcionario">
-        <input type="submit" value="Enviar">
+        <button><a href="{% url 'cadastrarfuncionario'%}">Cadastrar Funcionário <i class="fas fa-plus"></i></a></button>
+        <form method="GET" id="search-form">
+            <input type="text" name="search" id="search" placeholder="Buscar Funcionario" value="{{ request.GET.search }}">
+            <i class="fas fa-search" id="search-btn"></i>
+        </form>
+    </div>
+    <div class="filter-container">
+        <span>Filtrar por:</span>
+        <select name="filter" id="filter" class="form-control">
+            <option value="">Escolha uma opção</option>
+            <option value="name">Ordem alfabética crescente (A ao Z)</option>
+            <option value="-name">Ordem alfabética decrescente (Z ao A)</option>
+        </select>
+    </div>
+    {% if messages %}
+        <ul>
+            {% for i in messages%}
+                <li>{{i}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div class="form-container">
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nome</th>
                     <th>Login</th>
                     <th></th>
@@ -28,24 +48,31 @@
             <tbody>
         {% for i in funcionarios %}
                 <tr> 
+                    <td>{{i.id}}</td>
                     <td><a href="{% url 'funcionarios_id' id=i.id%}">{{i.name}}</a></td>
                     <td>{{i.login}}</td>
-                    <td><a href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
-                    <td><a href=""><i class="fa-solid fa-trash"></i></a></td>
+                    <td><a href="{% url 'editarfuncionario' id=i.id%}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td><a href="{% url 'deletarfuncionario' id=i.id%}" class="delete-btn"><i class="fa-solid fa-trash"></i></a></td>
                 </tr>
         {%endfor%}
             </tbody>
         </table>
     </div>
-{% endblock %}
+    <div class="pagination-container">
+        <span>
+            {%if funcionarios.has_previous%}
+                <a href="?page={{funcionarios.previous_page_number}}"><i class="fas fa-arrow-left"></i></a>
+            {%endif%}
 
-<!--
-    Listagem Comum:
-     {% for i in funcionarios %}
-            <p>ID: {{i.id}}</p>
-            <p><a href="{% url 'funcionarios_id' id=i.id%}">Nome: {{i.name}}</a></p>
-            <p>Login: {{i.login}}</p>
-            <p>Senha: {{i.password}}</p>
-            <hr></hr>
-        {%endfor%}
--->
+            {%if funcionarios.paginator.num_pages%}
+            <span>
+                {{funcionarios.number}} de {{funcionarios.paginator.num_pages}}
+            </span>
+            {%endif%}
+
+            {%if funcionarios.has_next%}
+                <a href="?page={{funcionarios.next_page_number}}"><i class="fas fa-arrow-right"></i></a>
+            {%endif%}
+        </span>
+    </div>
+{% endblock %}

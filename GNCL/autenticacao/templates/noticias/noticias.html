@@ -4,6 +4,7 @@
 {% block 'title' %}Lista de Notícias{% endblock %}
 {% block 'head' %}
     <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+    <script src="{% static 'js/noticiaScript.js' %}"></script>
 {% endblock %}
 
 {% block 'content' %}
@@ -12,9 +13,29 @@
         <h1>Notícias</h1>
     </div>
     <div class="input-container">
-        <button><a href="{% url 'cadastrarnoticia'%}">Cadastrar Notícia</a></button>
-        <input type="text" name="" id="" placeholder="Buscar Notícia">
-        <input type="submit" value="Enviar">
+        <button><a href="{% url 'cadastrarnoticia'%}">Cadastrar Notícia <i class="fas fa-plus"></i></a></button>
+        <form method="GET" id="search-form">
+            <input type="text" name="search" id="search" placeholder="Buscar Notícia" value="{{ request.GET.search }}">
+            <i class="fas fa-search" id="search-btn"></i>
+        </form>
+    </div><div class="filter-container">
+        <span>Filtrar por:</span>
+
+        <select name="filter" id="filter" class="form-control">
+            <option value="">Escolha uma opção</option>
+            <option value="-titulo">Titulo em ordem alfabética crescente (A ao Z)</option>
+            <option value="titulo">Titulo em ordem alfabética decrescente (Z ao A)</option>
+            <option value="-data_e_hora">Mais recentes</option>
+            <option value="data_e_hora">Mais antigas</option>
+        </select>
+
+        <span>Filtrar por autor:</span>
+        <select name="autorFilter" id="autorFilter" class="form-control">
+            <option value="">Escolha um autor</option>
+        {% for i in funcionarios %}
+            <option value="{{i.name}}">{{i.name}}</option>
+        {% endfor %}
+        </select>
     </div>
     {% if messages %}
         <ul>
@@ -52,13 +73,25 @@
                     <td>{{ i.texto }}</td>
                 {% endif %}
                 <td><a href="{% url 'editarnoticia' id=i.id%}"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                <td><a href="{% url 'deletarnoticia' id=i.id%}"><i class="fa-solid fa-trash"></i></a></td>
+                <td><a href="{% url 'deletarnoticia' id=i.id%}" class="delete-btn"><i class="fa-solid fa-trash"></i></a></td>
                 </tr>
         {%endfor%}
             </tbody>
         </table>
-        
-
+        <div class="pagination-container">
+            <span>
+                {%if noticias.has_previous%}
+                    <a href="?page={{noticias.previous_page_number}}"><i class="fas fa-arrow-left"></i></a>
+                {%endif%}
+                {%if noticias.paginator.num_pages%}
+                <span>
+                    {{noticias.number}} de {{noticias.paginator.num_pages}}
+                </span>
+                {%endif%}
+                {%if noticias.has_next%}
+                    <a href="?page={{noticias.next_page_number}}"><i class="fas fa-arrow-right"></i></a>
+                {%endif%}
+            </span>
     </div>
 {% endblock %}
 

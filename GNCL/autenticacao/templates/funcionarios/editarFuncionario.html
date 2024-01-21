@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %} Edição de Funcionário{% endblock %}
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+{% endblock %}
+
+{% block 'content' %}
+    <div class="title-container">
+        <i class="fa-solid fa-newspaper"></i>
+        <h1>Editar Funcionário: "{{funcionarios_id.name}}"</h1>
+    </div>
+    <div class="form-container">
+        <form method="POST">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit">
+        </form>
+    </div>
+{% endblock %}
+
