@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block 'title' %}Lista de Notícias{% endblock %}
+{% block 'title' %}Lista de Funcionários{% endblock %}
 {% block 'head' %}
     <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
     <script src="{% static 'js/funcionarioScript.js' %}"></script>
@@ -13,7 +13,7 @@
         <h1>Funcionários</h1>
     </div>
     <div class="input-container">
-        <button><a href="{% url 'cadastrarfuncionario'%}">Cadastrar Funcionário <i class="fas fa-plus"></i></a></button>
+        <button><a href="{% url 'cadastrarfuncionario' %}">Cadastrar Funcionário <i class="fas fa-plus"></i></a></button>
         <form method="GET" id="search-form">
             <input type="text" name="search" id="search" placeholder="Buscar Funcionario" value="{{ request.GET.search }}">
             <i class="fas fa-search" id="search-btn"></i>
@@ -23,8 +23,8 @@
         <span>Filtrar por:</span>
         <select name="filter" id="filter" class="form-control">
             <option value="">Escolha uma opção</option>
-            <option value="name">Ordem alfabética crescente (A ao Z)</option>
-            <option value="-name">Ordem alfabética decrescente (Z ao A)</option>
+            <option value="username">Ordem alfabética crescente (A ao Z)</option>
+            <option value="-username">Ordem alfabética decrescente (Z ao A)</option>
         </select>
     </div>
     {% if messages %}
@@ -40,7 +40,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Login</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -49,8 +48,7 @@
         {% for i in funcionarios %}
                 <tr> 
                     <td>{{i.id}}</td>
-                    <td><a href="{% url 'funcionarios_id' id=i.id%}">{{i.name}}</a></td>
-                    <td>{{i.login}}</td>
+                    <td><a href="{% url 'funcionarios_id' id=i.id%}">{{i.username}}</a></td>
                     <td><a href="{% url 'editarfuncionario' id=i.id%}"><i class="fa-solid fa-pen-to-square"></i></a></td>
                     <td><a href="{% url 'deletarfuncionario' id=i.id%}" class="delete-btn"><i class="fa-solid fa-trash"></i></a></td>
                 </tr>

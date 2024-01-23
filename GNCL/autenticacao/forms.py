@@ -1,14 +1,5 @@
 from django import forms
-from .models import Funcionario, Noticia
-
-class FuncionarioForm(forms.ModelForm):
-    class Meta:
-        model = Funcionario
-        fields = ['name', 'login', 'password']
-
-    name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Nome do Funcionário'}))
-    login = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Nome do Funcionário'}))
-    password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'placeholder': 'Senha do Funcionário'}))
+from .models import Noticia
 
 class NoticiaForm(forms.ModelForm):
     class Meta:

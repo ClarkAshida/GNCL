@@ -7,4 +7,33 @@
 {% endblock %}
 
 {% block 'content' %}
+<div class="dashboard-container">
+    <div class="box-container">
+        <div class="box">
+            <i class="fa-solid fa-file-circle-plus"></i>
+            <button><a href="{% url 'cadastrarnoticia'%}">Adicionar Notícia</a></button>
+        </div>
+
+        <div class="box">
+            <i class="fa-solid fa-file"></i>
+            <button><a href="{%url 'noticias'%}">Visualizar Notícias</a></button>
+        </div>
+
+        <div class="box">
+            <i class="fa-solid fa-user-plus"></i>
+            <button><a href="{%url 'cadastrarfuncionario'%}">Adicionar Funcionário</a></button>
+        </div>
+
+        <div class="box">
+            <i class="fa-solid fa-users"></i>
+            <button><a href="{%url 'funcionarios'%}">Visualizar Funcionários</a></button>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+<li><a href="{%url 'dashboard'%}">Página Inicial</a></li>
+            <li><a href="{% url 'cadastrarnoticia'%}">Cadastrar Notícia</a></li>
+            <li><a href="{%url 'noticias'%}">Visualizar Notícias</a></li>
+            <li><a href="{%url 'cadastrarfuncionario'%}">Cadastrar Funcionário</a></li>
+            <li><a href="{%url 'funcionarios'%}">Visualizar Funcionários</a></li>

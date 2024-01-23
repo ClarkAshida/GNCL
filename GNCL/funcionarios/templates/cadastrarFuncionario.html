@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block 'title' %}Login{% endblock %}
+{% block 'title' %}Cadastrar Funcionario{% endblock %}
 {% block 'head' %}
     <link rel="stylesheet" href="{% static 'css/login.css'%}">
 {% endblock %}
 
 {% block 'content' %}
-    <h2>Fazer Login</h2>
+    <h2>Cadastrar Funcionário</h2>
     <form method="post">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">
         {{ form.as_p }}
-        <button type="submit">Entrar</button>
+        <button type="submit">Cadastrar</button>
     </form>
 {% endblock %}
