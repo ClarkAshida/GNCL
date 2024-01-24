@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Funcionario, Noticia
+from .models import Noticia
 from datetime import date
 from .forms import NoticiaForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -16,12 +17,12 @@ def cadastrarnoticia(request):
         if form.is_valid():
             noticia = Noticia(
                 titulo=form.cleaned_data['titulo'],
-                autor=Funcionario.objects.get(id='2').name,
+                autor=request.user,
                 texto=form.cleaned_data['texto'],
                 legenda=form.cleaned_data['legenda'],
                 categoria=form.cleaned_data['categoria'],
                 data_e_hora=date.today(),
-                id_funcionario=Funcionario.objects.get(id='2')
+                id_funcionario=request.user
             )
             noticia.save()
             messages.info(request, 'Notícia criada com sucesso.')
@@ -34,7 +35,7 @@ def noticias(request):
     search = request.GET.get('search')
     filter = request.GET.get('filter')
     autorFilter = request.GET.get('autorFilter')
-    funcionarios = Funcionario.objects.all()
+    funcionarios = get_user_model().objects.all()
 
     if search:
         noticias = Noticia.objects.filter(titulo__icontains=search)
@@ -49,10 +50,6 @@ def noticias(request):
         noticias = paginator.get_page(page)
 
     return render(request, 'noticias/noticias.html', {'noticias': noticias, "funcionarios": funcionarios})
-
-@login_required
-def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
 
 @login_required
 def display_noticias(request, id=None):

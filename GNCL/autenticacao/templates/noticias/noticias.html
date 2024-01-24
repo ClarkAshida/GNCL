@@ -13,7 +13,7 @@
         <h1>Notícias</h1>
     </div>
     <div class="input-container">
-        <button><a href="{% url 'cadastrarnoticia'%}">Cadastrar Notícia <i class="fas fa-plus"></i></a></button>
+        <button><a href="{% url 'cadastrarnoticia' %}">Cadastrar Notícia <i class="fas fa-plus"></i></a></button>
         <form method="GET" id="search-form">
             <input type="text" name="search" id="search" placeholder="Buscar Notícia" value="{{ request.GET.search }}">
             <i class="fas fa-search" id="search-btn"></i>
@@ -33,7 +33,7 @@
         <select name="autorFilter" id="autorFilter" class="form-control">
             <option value="">Escolha um autor</option>
         {% for i in funcionarios %}
-            <option value="{{i.name}}">{{i.name}}</option>
+            <option value="{{i.username}}">{{i.username}}</option>
         {% endfor %}
         </select>
     </div>

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class UserEditForm(UserChangeForm):
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['username']
 
     password = forms.CharField(
         label="Password",

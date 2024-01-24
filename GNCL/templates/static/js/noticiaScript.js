@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    var baseUrl = 'http://127.0.0.1:8000/noticias/'
+    var baseUrl = 'http://127.0.0.1:8000/noticias/noticias/'
     var deleteBtn = $('.delete-btn');
     var searchBtn = $('#search-btn');
     var searchForm = $('#search-form');
