@@ -116,7 +116,3 @@ nav li a{
 nav li a:hover{
     text-decoration: underline;
 }
-
-main{
-    padding: 20px 50px;
-}

@@ -94,21 +94,3 @@
             </span>
     </div>
 {% endblock %}
-
-<!--
-    {% for i in noticias %}
-            <p>ID: {{i.id}}</p>
-            <p><a href="{% url 'noticias_id' id=i.id%}">Título: {{i.titulo}}</a></p>
-            <p>Autor: {{i.autor}}</p>
-            <p>Categoria: {{i.categoria}}</p>
-            <hr></hr>
-    {%endfor%}
-
-    titulo = models.CharField(max_length=100)
-    autor = models.CharField(max_length=100)
-    texto = models.TextField()
-    legenda = models.CharField(max_length=100)
-    categoria = models.CharField(max_length=100)
-    data_e_hora = models.DateTimeField()  
-    id_funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
--->

@@ -12,5 +12,5 @@ class UserEditForm(UserChangeForm):
         label="Password",
         widget=forms.PasswordInput,
         required=False,
-        help_text="Leave it blank if you don't want to change your password."
+        help_text="Deixe esse campo vazio se deseja continuar com a mesma senha."
     )

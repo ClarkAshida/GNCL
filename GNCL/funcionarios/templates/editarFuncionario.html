@@ -1,5 +1,16 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Salvar Alterações</button>
-</form>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}Cadastrar Funcionario{% endblock %}
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+{% endblock %}
+
+{% block 'content' %}
+    <h2>Editar Funcionário</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Alterações</button>
+    </form>
+{% endblock %}

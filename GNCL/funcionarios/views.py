@@ -48,6 +48,7 @@ def editarFuncionario(request, id):
         form = UserEditForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
+            messages.info(request, 'Funcionário Editado com sucesso.')
             return redirect('funcionarios')
     else:
         form = UserEditForm(instance=user)
