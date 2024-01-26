@@ -54,12 +54,12 @@ WSGI_APPLICATION = 'GNCL.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+    'ENGINE': 'mysql.connector.django',
+    'NAME': '',
+    'USER': '',
+    'PASSWORD': '',
+    'HOST': 'localhost',
+    'PORT': '3306',
     }
 }
 

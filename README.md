@@ -42,22 +42,22 @@ GNCL is the News Manager for ContestLink, a CRUD system for managing news to be 
    cd GNCL
    ```
 
-2. Abra o arquivo `settings.py` no diretório `ContestLink` e insira as informações do seu banco de dados no bloco `DATABASES`:
+2. Open the `settings.py` file in the `ContestLink` directory and insert your database information into the `DATABASES` block:
 
    ```python
    DATABASES = {
        'default': {
            'ENGINE': 'mysql.connector.django',
-           'NAME': 'seu_nome_de_banco',
-           'USER': 'seu_usuario',
-           'PASSWORD': 'sua_senha',
+           'NAME': 'your_database_name',
+           'USER': 'your_user',
+           'PASSWORD': 'your_password',
            'HOST': 'localhost',
            'PORT': '3306',
        }
    }
    ```
 
-Substitua `'seu_nome_de_banco'`, `'seu_usuario'` e `'sua_senha'` pelos detalhes do seu banco de dados MySQL.
+Replace `'your_database_name'`, `'your_user'`, and `'your_password'` with your MySQL database details.
 
 3. Ensure you have a MySQL database set up and run database migrations:
 
