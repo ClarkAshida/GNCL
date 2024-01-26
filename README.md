@@ -87,7 +87,7 @@ In the upcoming releases of this project, the plan is to implement user permissi
 
 ## Contributors
 
-- I appreciate all the wonderful people who contributed to this project!:
+- I appreciate all the wonderful people who contributed to this project:
 
 - [IohanaViterbino](https://github.com/IohanaViterbino)
 - [AlanFernandesXavier](https://github.com/AlanFernandesXavier)
