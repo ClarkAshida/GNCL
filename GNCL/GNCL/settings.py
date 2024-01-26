@@ -55,9 +55,9 @@ WSGI_APPLICATION = 'GNCL.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'contestlink_db',
-        'USER': 'root',
-        'PASSWORD': 'dragon123', #retirar no github
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }
