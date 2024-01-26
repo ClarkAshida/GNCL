@@ -1,0 +1,15 @@
+.main-container{
+    margin: 30px 0px;
+}
+
+.main-container h1{
+    font-weight: 600;
+}
+
+.details-container{
+    font-size: 18px;
+}
+
+.content-container{
+    font-size: 18px;
+}

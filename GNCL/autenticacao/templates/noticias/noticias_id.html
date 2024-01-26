@@ -3,30 +3,20 @@
 
 {% block 'title' %}{{noticias_id.titulo}}{% endblock %}
 {% block 'head' %}
-    <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+    <link rel="stylesheet" href="{% static 'css/id.css'%}">
 {% endblock %}
 
 {% block 'content' %}
-    <div class="title-container">
-        <h1>{{noticias_id.titulo}}</h1>
+    <div class="main-container">
+        <h1><b>Título:</b> {{noticias_id.titulo}}</h1>
+        <h3><b>Legenda:</b> {{noticias_id.legenda}}</p>
     </div>
-    <div class="info-container">
-        <h2>Informações da Notícia:</h2>
-        <p>Título: {{noticias_id.titulo}}</p>
-        <p>Autor: {{noticias_id.autor}}</p>
-        <p>Texto: {{noticias_id.texto}}</p>
-        <p>Legenda: {{noticias_id.legenda}}</p>
-        <p>Categoria: {{noticias_id.categoria}}</p>
-        <p>Data: {{noticias_id.data_e_hora | date:"d/m/Y"}}</p>
+    <div class="details-container">
+        <p><b>Autor:</b> {{noticias_id.autor}}</p>
+        <p><b>Categoria:</b> {{noticias_id.categoria}}</p>
+        <p><b>Data:</b> {{noticias_id.data_e_hora | date:"d/m/Y"}}</p>
+    </div>
+    <div class="content-container">
+        <p><b>Texto:</b> {{noticias_id.texto}}</p>
     </div>
 {% endblock %}
-
-<!--
-    titulo = models.CharField(max_length=100)
-    autor = models.CharField(max_length=100)
-    texto = models.TextField()
-    legenda = models.CharField(max_length=100)
-    categoria = models.CharField(max_length=100)
-    data_e_hora = models.DateTimeField()  
-    id_funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
--->

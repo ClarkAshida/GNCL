@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block 'title' %} Edição de Notícia{% endblock %}
 {% block 'head' %}
@@ -9,12 +10,16 @@
 {% block 'content' %}
     <div class="title-container">
         <i class="fa-solid fa-newspaper"></i>
+        {% if i.titulo|length > 10 %}
+        <h1>{{i.titulo | slice:":10"}}...</h1>
+        {% else %}
         <h1>Editar Notícia: "{{noticias_id.titulo}}"</h1>
+        {% endif %}
     </div>
     <div class="form-container">
         <form method="POST">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit">
+            {{ form|crispy }}
+            <input type="submit" class="main-btn">
         </form>
     </div>
 {% endblock %}

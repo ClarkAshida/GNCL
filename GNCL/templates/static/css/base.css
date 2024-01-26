@@ -24,6 +24,10 @@ a{
     cursor: pointer;
 }
 
+body{
+    height: 100vh;
+}
+
 header{
     padding: 15px 50px;
     background-color: var(--dark-blue);
@@ -50,7 +54,7 @@ header{
 }
 
 .header-container button{
-    padding: 8px 30px;
+    padding: 10px 40px;
 }
 
 .header-container button:hover{
@@ -76,6 +80,7 @@ header{
     cursor: pointer;
     border-radius: 8px;
     font-weight: 700;
+    padding: 12px 20px;
 }
 
 .main-btn:hover{
@@ -115,4 +120,8 @@ nav li a{
 
 nav li a:hover{
     text-decoration: underline;
+}
+
+main{
+    padding: 12px 50px;
 }

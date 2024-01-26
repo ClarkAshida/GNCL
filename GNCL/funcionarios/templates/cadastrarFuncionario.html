@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block 'title' %}Cadastrar Funcionario{% endblock %}
 {% block 'head' %}
-    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+    <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
 {% endblock %}
 
 {% block 'content' %}
-    <h2>Cadastrar Funcionário</h2>
-    <form method="post">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}">
-        {{ form.as_p }}
-        <button type="submit">Cadastrar</button>
-    </form>
+    <div class="title-container">
+        <i class="fa-solid fa-user"></i>
+        <h1>Cadastrar Novo Funcionário</h1>
+    </div>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+            {{ form|crispy }}
+            <button type="submit" class="main-btn my-4">Cadastrar</button>
+        </form>
+    </div>
 {% endblock %}

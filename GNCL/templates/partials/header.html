@@ -2,14 +2,14 @@
     <div class="header-container">
         <div class="logo-container">
             <p>Contest<span>Link</span></p>
-            <p>Userário: {{ user.username }}</p>
+            <p>Usuário: {{ user.username }}</p>
         </div>
         <i class="fa-solid fa-magnifying-glass"></i>
         <div class="buttons-container">
             {% if user.is_authenticated%}
             <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
-                <button type="submit">Logout</button>
+                <button type="submit" class="main-btn">Sair</button>
             </form>
             {% else %}
                 <button class="main-btn"><a href="/accounts/login">Fazer Login</a></button>

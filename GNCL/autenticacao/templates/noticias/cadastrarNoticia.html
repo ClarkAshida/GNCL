@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block 'title' %} Cadastro de Notícia{% endblock %}
 {% block 'head' %}
@@ -13,13 +14,9 @@
     </div>
     <div class="form-container">
         <form method="POST" action="{% url 'cadastrarnoticia' %}">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit">
+            {{ form|crispy }}
+            <input type="submit" class="main-btn my-4">
         </form>
-        {% if form.errors %}
-        <p style="color: red;">Corrija os erros abaixo:</p>
-        {% endif %}
-        {{ form.errors }}
     </div>
 {% endblock %}
 

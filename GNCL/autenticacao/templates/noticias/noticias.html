@@ -3,7 +3,7 @@
 
 {% block 'title' %}Lista de Notícias{% endblock %}
 {% block 'head' %}
-    <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+    <link rel="stylesheet" href="{% static 'css/visualizar.css'%}">
     <script src="{% static 'js/noticiaScript.js' %}"></script>
 {% endblock %}
 
@@ -13,12 +13,13 @@
         <h1>Notícias</h1>
     </div>
     <div class="input-container">
-        <button><a href="{% url 'cadastrarnoticia' %}">Cadastrar Notícia <i class="fas fa-plus"></i></a></button>
-        <form method="GET" id="search-form">
-            <input type="text" name="search" id="search" placeholder="Buscar Notícia" value="{{ request.GET.search }}">
+        <a href="{% url 'cadastrarnoticia' %}"><button class="main-btn">Cadastrar Notícia <i class="fas fa-plus"></i></a></button></a>
+        <form method="GET" id="search-form" class="search-form">
+            <input type="text" name="search" id="search" class="search" placeholder="Buscar Notícia" value="{{ request.GET.search }}">
             <i class="fas fa-search" id="search-btn"></i>
         </form>
-    </div><div class="filter-container">
+    </div>
+    <div class="filter-container">
         <span>Filtrar por:</span>
 
         <select name="filter" id="filter" class="form-control">
@@ -45,7 +46,7 @@
         </ul>
     {% endif %}
     <div class="form-container">
-        <table>
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>Título</th>
@@ -54,26 +55,44 @@
                     <th>Categoria</th>
                     <th>Data</th>
                     <th>Texto</th>
-                    <th></th>
-                    <th></th>
+                    <th colspan="2">Ações</th>
                 </tr>
             </thead>
         
             <tbody>
         {% for i in noticias %}
-                <tr> 
-                    <td><a href="{% url 'noticias_id' id=i.id%}">{{i.titulo}}</a></td>
-                    <td>{{i.autor}}</td>
-                    <td>{{i.legenda}}</td>
-                    <td>{{i.categoria}}</td>
+                <tr>
+                {% if i.titulo|length > 20 %}
+                <td><a href="{% url 'noticias_id' id=i.id%}" class="link-primary">{{i.titulo | slice:":20"}}... Ler mais</a></td>
+                {% else %}
+                    <td><a href="{% url 'noticias_id' id=i.id%}" class="link-primary">{{i.titulo}}</a></td>
+                {% endif %}
+
+                {% if i.autor|length > 20 %}
+                <td>{{i.autor | slice:":20"}}...</td>
+                {% else %}
+                <td>{{i.autor}}</td>
+                {% endif %}
+
+                {% if i.legenda|length > 20 %}
+                <td>{{i.legenda | slice:":20"}}...</td>
+                {% else %}
+                <td>{{i.legenda}}</td>
+                {% endif %}
+
+                {% if i.categoria|length > 20 %}
+                <td>{{i.categoria | slice:":20"}}...</td>
+                {% else %}
+                <td>{{i.categoria}}</td>
+                {% endif %}
                     <td>{{i.data_e_hora | date:"d/m/Y"}}</td>
                 {% if i.texto|length > 20 %}
-                    <td>{{i.texto | slice:":20"}}<a href="{% url 'noticias_id' id=i.id%}">... Ler mais</a></p></td>
+                    <td>{{i.texto | slice:":20"}}<a href="{% url 'noticias_id' id=i.id%}">... Ler mais</a></td>
                 {% else %}
                     <td>{{ i.texto }}</td>
                 {% endif %}
-                <td><a href="{% url 'editarnoticia' id=i.id%}"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                <td><a href="{% url 'deletarnoticia' id=i.id%}" class="delete-btn"><i class="fa-solid fa-trash"></i></a></td>
+                <td><a href="{% url 'editarnoticia' id=i.id%}"><i class="fa-solid fa-pen-to-square fa-lg text-success"></i></a></td>
+                <td><a href="{% url 'deletarnoticia' id=i.id%}" class="delete-btn"><i class="fa-solid fa-trash fa-lg text-danger"></i></a></td>
                 </tr>
         {%endfor%}
             </tbody>
@@ -81,7 +100,7 @@
         <div class="pagination-container">
             <span>
                 {%if noticias.has_previous%}
-                    <a href="?page={{noticias.previous_page_number}}"><i class="fas fa-arrow-left"></i></a>
+                    <a href="?page={{noticias.previous_page_number}}"><i class="fas fa-arrow-left fa-lg"></i></a>
                 {%endif%}
                 {%if noticias.paginator.num_pages%}
                 <span>
@@ -89,7 +108,7 @@
                 </span>
                 {%endif%}
                 {%if noticias.has_next%}
-                    <a href="?page={{noticias.next_page_number}}"><i class="fas fa-arrow-right"></i></a>
+                    <a href="?page={{noticias.next_page_number}}"><i class="fas fa-arrow-right fa-lg"></i></a>
                 {%endif%}
             </span>
     </div>

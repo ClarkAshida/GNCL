@@ -45,7 +45,7 @@ def noticias(request):
         noticias = Noticia.objects.filter(autor__icontains=autorFilter)
     else:
         noticias_list = Noticia.objects.all().order_by('-data_e_hora')
-        paginator = Paginator(noticias_list, 3)
+        paginator = Paginator(noticias_list, 10)
         page = request.GET.get('page')
         noticias = paginator.get_page(page)
 

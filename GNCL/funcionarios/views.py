@@ -27,7 +27,7 @@ def funcionarios(request):
         funcionarios = User.objects.all().order_by(filter)
     else:
         funcionarios_list = User.objects.all()
-        paginator = Paginator(funcionarios_list, 3)
+        paginator = Paginator(funcionarios_list, 10)
         page = request.GET.get('page')
         funcionarios = paginator.get_page(page)
     return render(request, 'funcionarios.html', {'funcionarios': funcionarios})

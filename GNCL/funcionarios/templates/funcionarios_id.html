@@ -3,15 +3,15 @@
 
 {% block 'title' %}{{funcionarios_id.name}}{% endblock %}
 {% block 'head' %}
-    <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+    <link rel="stylesheet" href="{% static 'css/id.css'%}">
 {% endblock %}
 
 {% block 'content' %}
     <div class="title-container">
         <h1>{{funcionarios_id.name}}</h1>
     </div>
-    <div class="info-container">
+    <div class="details-container">
         <h2>Informações Pessoais:</h2>
-        <p>Nome: {{funcionarios_id.username}}</p>
+        <p><b>Nome:</b> {{funcionarios_id.username}}</p>
     </div>
 {% endblock %}

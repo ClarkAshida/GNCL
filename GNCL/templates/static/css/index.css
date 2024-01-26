@@ -23,18 +23,25 @@
     margin: 0px 10px 0px 0px;
 }
 
-.news-container, .employee-container{
+.dashboard-container{
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: repeat(1, 1fr);
     gap: 1px;
 }
 
-.box-container{
+.box{
     background-color: var(--grey);
-    margin: 30px;
+    margin: 20px;
     border-radius: 12px;
-    padding: 20px 20px;
+    padding: 30px 20px;
 
     display: flex;
     flex-direction: column;
@@ -49,26 +56,4 @@
     color: var(--regular-blue);
     font-size: 52px;
     margin: 50px;
-}
-
-.box-container h2{
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.button-container button{
-    background-color: var(--regular-blue);
-    padding: 12px 30px;
-    color: #fff;
-    transition: 0.3s;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    font-weight: 700;
-}
-
-.button-container button:hover{
-    background-color: #134FC2;
 }

@@ -1,0 +1,21 @@
+.title-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0px;
+    overflow: hidden;
+}
+.title-container h1{
+    font-size: 32px;
+    margin: 0px;
+    word-wrap: break-word;
+}
+.title-container i{
+    color: var(--regular-blue);   
+    font-size: 24px;
+    margin: 0px 10px 0px 0px;
+}
+
+.form-container label{
+    margin: 20px 0px 0px 0px;
+}

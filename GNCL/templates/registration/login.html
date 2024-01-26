@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block 'title' %}Login{% endblock %}
 {% block 'head' %}
@@ -7,11 +8,18 @@
 {% endblock %}
 
 {% block 'content' %}
-    <h2>Fazer Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}">
-        {{ form.as_p }}
-        <button type="submit">Entrar</button>
-    </form>
+
+<div class="card auth-card">
+    <div class="card-body p-5">
+            <h4 class="card-title text-center">Faça Login no GNCL</h4>
+                <form method="post" class="px-5 py-2">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    {{ form|crispy }}
+                    <button type="submit" class="main-btn mt-3">Entrar</button>
+                </form>
+    </div>
+</div>
+
+
 {% endblock %}

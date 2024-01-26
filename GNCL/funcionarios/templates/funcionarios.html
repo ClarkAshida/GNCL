@@ -3,19 +3,19 @@
 
 {% block 'title' %}Lista de Funcionários{% endblock %}
 {% block 'head' %}
-    <link rel="stylesheet" href="{% static 'css/cadastro.css'%}">
+    <link rel="stylesheet" href="{% static 'css/visualizar.css'%}">
     <script src="{% static 'js/funcionarioScript.js' %}"></script>
 {% endblock %}
 
 {% block 'content' %}
     <div class="title-container">
-        <i class="fa-solid fa-newspaper"></i>
+        <i class="fa-solid fa-user"></i>
         <h1>Funcionários</h1>
     </div>
     <div class="input-container">
-        <button><a href="{% url 'cadastrarfuncionario' %}">Cadastrar Funcionário <i class="fas fa-plus"></i></a></button>
-        <form method="GET" id="search-form">
-            <input type="text" name="search" id="search" placeholder="Buscar Funcionario" value="{{ request.GET.search }}">
+        <a href="{% url 'cadastrarfuncionario' %}"><button class="main-btn">Cadastrar Funcionário <i class="fas fa-plus"></i></button></a>
+        <form method="GET" id="search-form" class="search-form">
+            <input type="text" name="search" id="search" class="search" placeholder="Buscar Notícia" value="{{ request.GET.search }}">
             <i class="fas fa-search" id="search-btn"></i>
         </form>
     </div>
@@ -35,22 +35,21 @@
         </ul>
     {% endif %}
     <div class="form-container">
-        <table>
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th></th>
-                    <th></th>
+                    <th colspan="2">Ações</th>
                 </tr>
             </thead>    
             <tbody>
         {% for i in funcionarios %}
                 <tr> 
                     <td>{{i.id}}</td>
-                    <td><a href="{% url 'funcionarios_id' id=i.id%}">{{i.username}}</a></td>
-                    <td><a href="{% url 'editarfuncionario' id=i.id%}"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                    <td><a href="{% url 'deletarfuncionario' id=i.id%}" class="delete-btn"><i class="fa-solid fa-trash"></i></a></td>
+                    <td><a href="{% url 'funcionarios_id' id=i.id%}" class="link-primary">{{i.username}}</a></td>
+                    <td><a href="{% url 'editarfuncionario' id=i.id%}"><i class="fa-solid fa-pen-to-square fa-lg text-success"></i></a></td>
+                    <td><a href="{% url 'deletarfuncionario' id=i.id%}" class="delete-btn"><i class="fa-solid fa-trash text-danger"></i></a></td>
                 </tr>
         {%endfor%}
             </tbody>
@@ -59,7 +58,7 @@
     <div class="pagination-container">
         <span>
             {%if funcionarios.has_previous%}
-                <a href="?page={{funcionarios.previous_page_number}}"><i class="fas fa-arrow-left"></i></a>
+                <a href="?page={{funcionarios.previous_page_number}}"><i class="fas fa-arrow-left fa-lg"></i></a>
             {%endif%}
 
             {%if funcionarios.paginator.num_pages%}
@@ -69,7 +68,7 @@
             {%endif%}
 
             {%if funcionarios.has_next%}
-                <a href="?page={{funcionarios.next_page_number}}"><i class="fas fa-arrow-right"></i></a>
+                <a href="?page={{funcionarios.next_page_number}}"><i class="fas fa-arrow-right fa-lg"></i></a>
             {%endif%}
         </span>
     </div>
